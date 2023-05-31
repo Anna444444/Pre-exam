@@ -70,6 +70,11 @@ let newb = document.querySelector('#newB');
  newb.onclick = () => {bk.forEach(book => {
 
     let newBk = document.querySelector('#newBooksPage');
+    let given = document.querySelector('.givenBooksPage');
+    given.classList.add('unactive');
+    newBk.classList.remove('unactive');
+
+
 
     newBk.append(book.view);
  });

@@ -75,8 +75,14 @@ body{
 
 
 #newBooksPage{
+    flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
+}
+#newBooksPage div{
+    display: flex;
+    flex-basis: 30%;
+    flex-wrap:  wrap;
 }
 
 #users{
