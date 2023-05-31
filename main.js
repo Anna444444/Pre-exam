@@ -67,8 +67,8 @@ async function getBook(){
 
 let newb = document.querySelector('#newB');
 
- newb.onclick = bk.forEach(book => {
-    
+ newb.onclick = () => {bk.forEach(book => {
+
     let newBk = document.querySelector('#newBooksPage');
     
     // let readers = document.querySelector('#readersPage');
@@ -83,5 +83,5 @@ let newb = document.querySelector('#newB');
 
 
     newBk.append(book.view);
-
  });
+}
