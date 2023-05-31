@@ -110,3 +110,7 @@ body{
 #givenBooks{
     display: flex;
 }
+
+#visitorsList li img{
+    width: 100px;
+}
