@@ -61,16 +61,33 @@ async function getBook(){
    });
  }
  
- const readersTab = document.getElementById('readers');
- readersTab.addEventListener('click', showVisitors);
-
-
-let newb = document.querySelector('#newB');
-
- newb.onclick = () => {bk.forEach(book => {
-
-    let newBk = document.querySelector('#newBooksPage');
-
-    newBk.append(book.view);
- });
+function activateVisitors() {
+  const tabs = document.querySelectorAll('.tabs li');
+  tabs.forEach(tab => {
+      if (tab.id === 'readers') {
+          tab.classList.add('active');
+      } else {
+          tab.classList.remove('active');
+      }
+  });
+  showVisitors();
 }
+
+function toggleReaders() {
+  const readersTab = document.getElementById('readers');
+  const readersPage = document.getElementById('readersPage');
+  
+  if (readersPage.classList.contains('unactive')) {
+      readersPage.classList.remove('unactive');
+      readersTab.classList.add('active');
+      showVisitors();
+  } else {
+      readersPage.classList.add('unactive');
+      readersTab.classList.remove('active');
+  }
+}
+
+const readersTab = document.getElementById('readers');
+readersTab.addEventListener('click', toggleReaders);
+
+
