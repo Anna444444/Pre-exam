@@ -85,3 +85,55 @@ let newb = document.querySelector('#newB');
     newBk.append(book.view);
  });
 }
+
+
+// let newBk = document.querySelector('#newBooksPage');
+// let readers = document.querySelector('#readersPage');
+// let given = document.querySelector('#givenBooks');
+
+
+// newBk.addEventListener('click',newBookActive);
+// readers.addEventListener('click',readersActive);
+// given.addEventListener('click',givenActive);
+
+
+function newBookActive(){
+    let newBk = document.querySelector('#newBooksPage');
+    let readers = document.querySelector('#readersPage');
+    let given = document.querySelector('#givenBooks');
+
+    newBk.classList.add('unactive');
+    readers.classList.add('unactive');
+    given.classList.add('unactive');
+
+    newBk.classList.remove('unactive');
+}
+
+
+function readersActive(){
+    let newBk = document.querySelector('#newBooksPage');
+    let readers = document.querySelector('#readersPage');
+    let given = document.querySelector('#givenBooksPage');
+
+    newBk.classList.add('unactive');
+    readers.classList.add('unactive');
+    given.classList.add('unactive');
+
+    readers.classList.remove('unactive');
+}
+
+
+function givenActive(){
+    let newBk = document.querySelector('#newBooksPage');
+    let readers = document.querySelector('#readersPage');
+    let given = document.querySelector('#givenBooks');
+
+    newBk.classList.add('unactive');
+    readers.classList.add('unactive');
+    given.classList.add('unactive');
+
+    given.classList.remove('unactive');
+}
+
+
+
