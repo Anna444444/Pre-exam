@@ -85,6 +85,10 @@ body{
     flex-wrap:  wrap;
 }
 
+#newBooksPage div img {
+    width: 70%;
+}
+
 #users{
     list-style: none;
     font-weight: 600;
