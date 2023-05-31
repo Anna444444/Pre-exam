@@ -63,3 +63,8 @@ async function getBook(){
  
  const readersTab = document.getElementById('readers');
  readersTab.addEventListener('click', showVisitors);
+
+
+ bk.forEach(book => {
+
+ });
