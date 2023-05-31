@@ -61,8 +61,7 @@ async function getBook(){
    });
  }
  
- const readersTab = document.getElementById('readers');
- readersTab.addEventListener('click', showVisitors);
+
 
 
 let newb = document.querySelector('#newB');
@@ -81,3 +80,31 @@ let newb = document.querySelector('#newB');
     newBk.append(book.view);
  });
 }
+
+
+let readersVisible = false;
+
+function showReaders() {
+    const readersPage = document.getElementById('readersPage');
+    readersPage.classList.remove('unactive');
+    readersVisible = true;
+}
+
+function hideReaders() {
+    const readersPage = document.getElementById('readersPage');
+    readersPage.classList.add('unactive');
+    readersVisible = false;
+}
+
+function toggleReaders() {
+    if (readersVisible) {
+        hideReaders();
+    } else {
+        showReaders();
+    }
+}
+
+const readersTab = document.getElementById('readers');
+readersTab.addEventListener('click', toggleReaders);
+
+
