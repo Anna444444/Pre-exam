@@ -71,8 +71,10 @@ let newb = document.querySelector('#newB');
 
     let newBk = document.querySelector('#newBooksPage');
     let given = document.querySelector('.givenBooksPage');
+    let readers = document.querySelector('#readersPage');
     given.classList.add('unactive');
     newBk.classList.remove('unactive');
+    readers.classList.add('unactive');
 
 
 
