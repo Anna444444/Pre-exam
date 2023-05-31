@@ -12,20 +12,22 @@ export class Book {
         this.image = data.image;
         this.user = undefined;
         this.view = document.createElement('div');
-        this.view.insertAdjacentHTML("afterbegin", `<img src=${this.image}>  <p>${this.id}</p> <p>${this.title}</p> <p>${this.subtitle}</p> <p>${this.authors}</p> <p>Есть в наличии</p>`);
+        this.view.insertAdjacentHTML("afterbegin", `<img src=${this.image}>  <p>${this.id}</p> <p>${this.title}</p> <p>${this.subtitle}</p> <p>${this.authors}</p> <p id="isGiven">Есть в наличии</p>`);
     }
 
 
     giveBook(user) {
 
         this.user = user;
-        this.view.insertAdjacentHTML("afterbegin", `<img src=${this.image}> <p>${this.id}</p> <p>${this.title}</p> <p>${this.subtitle}</p> <p>${this.authors}</p> <p>Выдано: ${this.user}</p>`);
+        let isgvn = document.querySelector('#isGiven');
+        isgvn.innerHTML = `<p>Выдано: ${this.user}</p>`;
 
     }
 
     returnBook(user) {
         this.user = undefined;
-        this.view.insertAdjacentHTML("afterbegin", `<img src=${this.image}> <p>${this.id}</p> <p>${this.title}</p> <p>${this.subtitle}</p> <p>${this.authors}</p> <p>Есть в наличии</p>`);
+        let isgvn = document.querySelector('#isGiven');
+        isgvn.innerHTML = `<p>Есть в наличии</p>`;
     }
 
 
