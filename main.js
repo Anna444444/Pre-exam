@@ -61,30 +61,45 @@ async function getBook(){
    });
  }
  
-function activateVisitors() {
-  const tabs = document.querySelectorAll('.tabs li');
-  tabs.forEach(tab => {
-      if (tab.id === 'readers') {
-          tab.classList.add('active');
-      } else {
-          tab.classList.remove('active');
-      }
-  });
-  showVisitors();
+
+
+
+let newb = document.querySelector('#newB');
+
+ newb.onclick = () => {bk.forEach(book => {
+
+    let newBk = document.querySelector('#newBooksPage');
+    let given = document.querySelector('.givenBooksPage');
+    given.classList.add('unactive');
+    newBk.classList.remove('unactive');
+
+
+
+    newBk.append(book.view);
+ });
+}
+
+
+let readersVisible = false;
+
+function showReaders() {
+    const readersPage = document.getElementById('readersPage');
+    readersPage.classList.remove('unactive');
+    readersVisible = true;
+}
+
+function hideReaders() {
+    const readersPage = document.getElementById('readersPage');
+    readersPage.classList.add('unactive');
+    readersVisible = false;
 }
 
 function toggleReaders() {
-  const readersTab = document.getElementById('readers');
-  const readersPage = document.getElementById('readersPage');
-  
-  if (readersPage.classList.contains('unactive')) {
-      readersPage.classList.remove('unactive');
-      readersTab.classList.add('active');
-      showVisitors();
-  } else {
-      readersPage.classList.add('unactive');
-      readersTab.classList.remove('active');
-  }
+    if (readersVisible) {
+        hideReaders();
+    } else {
+        showReaders();
+    }
 }
 
 const readersTab = document.getElementById('readers');
