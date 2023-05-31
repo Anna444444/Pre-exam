@@ -18,10 +18,9 @@
     <div class="cont">
         <div class="menu">
             <ul class="tabs">
-                <li id="newBooks"> <i class="fa-solid fa-newspaper"></i>     Новинки</li>
+                <li id="newB"> <i class="fa-solid fa-newspaper"></i>     Новинки</li>
                 <li id="readers"> <i class="fa-solid fa-book-open-reader"></i>    Читатели</li>
                 <li id="issued"><i class="fa-solid fa-hand-holding-hand"></i>     Выданные</li>
-                <li id="profile"><i class="fa-solid fa-user"></i>   Профиль</li>
             </ul>
         </div>
         <div class="right-side">
@@ -30,6 +29,44 @@
                 <input id="writer" type="text" placeholder="Автор">
                 <button id="search"><i class="fa-solid fa-magnifying-glass"></i>Найти</button>
             </div>
+
+            <div class="unactive" id="newBooksPage">
+                <div class="book">
+                    <img src="/resourses/ex.png">
+                    <h3>Это Название</h3>
+                    <p>Это автор</p>
+                </div>
+            </div>
+
+            <div class="unactive" id="readersPage">
+                <h2>Пользователи:</h2>
+                <ul id="users">
+                    <li>Карлин Петр</li>
+                    
+                </ul>
+                <i id="addUser" class="fa-solid fa-plus"></i>
+            </div>
+
+            <div class="givenBooksPage">
+                <div class="seachLine">
+                    <input id="oldBook" type="text" placeholder="Название книги">
+                    <input id="oldWriter" type="text" placeholder="Автор">
+                    <button id="searchOldBook"><i class="fa-solid fa-magnifying-glass"></i>Найти</button>
+                </div>
+                
+                <div id="givenBooks">
+                    <div class="book">
+                        <img src="/resourses/ex.png">
+                        <h3>Это Название</h3>
+                        <p>Это автор</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="profilePage">
+
+            </div>
+
         </div>
         
     </div>

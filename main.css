@@ -42,9 +42,71 @@ body{
     padding: 10px 0px;
 }
 
-#book,#writer{
+#book,#writer,#oldBook,#oldWriter{
     font-size: 18px;
     font-weight: 500;
     border-radius: 10px;
     border: none;
+    background-color: #DDBEAA;
+    margin-left: 10px;
+    padding: 6px;
+}
+
+#search,#searchOldBook{
+    border: none;
+    border-radius: 10px;
+    background-color: #469597;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 120px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.book{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+.book img{width: 100%;}
+
+
+#newBooksPage{
+    display: flex;
+    justify-content: space-between;
+}
+
+#users{
+    list-style: none;
+    font-weight: 600;
+}
+
+.unactive{display: none !important;}
+
+#addUser{
+    font-size: 40px;
+    cursor: pointer;
+}
+
+#readersPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 85%;
+}
+
+
+.givenBooksPage{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: space-around;
+}
+
+
+#givenBooks{
+    display: flex;
 }
