@@ -1,40 +1,48 @@
-*{margin:0;padding: 0;}
-body{
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
     margin: 0;
     padding: 0;
     background-color: #E5E3E4;
 }
-.cont{
+
+.cont {
     width: 1220px;
     margin: 0 auto;
     background-color: #BBC6C8;
     font-family: 'Roboto', sans-serif;
     display: flex;
 }
-.menu{
+
+.menu {
     width: 20%;
 }
-.tabs{
-    background-color:#5BA199 ;
+
+.tabs {
+    background-color: #5BA199;
     padding: 10px;
-    
+
 }
-.tabs li{
+
+.tabs li {
     list-style: none;
     width: 91.4%;
     background-color: #97bfba;
     font-size: 20px;
     font-weight: 600;
-    margin:10px 0px;
+    margin: 10px 0px;
     padding: 10px;
     cursor: pointer;
 }
 
-.right-side{
+.right-side {
     width: 80%;
 }
 
-.sarch{
+.sarch {
     width: 100%;
     background-color: white;
     display: flex;
@@ -42,7 +50,10 @@ body{
     padding: 10px 0px;
 }
 
-#book,#writer,#oldBook,#oldWriter{
+#book,
+#writer,
+#oldBook,
+#oldWriter {
     font-size: 18px;
     font-weight: 500;
     border-radius: 10px;
@@ -52,7 +63,8 @@ body{
     padding: 6px;
 }
 
-#search,#searchOldBook{
+#search,
+#searchOldBook {
     border: none;
     border-radius: 10px;
     background-color: #469597;
@@ -65,33 +77,38 @@ body{
     font-weight: 400;
 }
 
-.book{
+.book {
     text-align: center;
     display: flex;
     flex-direction: column;
     width: 20%;
 }
-.book img{width: 100%;}
+
+.book img {
+    width: 100%;
+}
 
 
-#newBooksPage{
+#newBooksPage {
     display: flex;
     justify-content: space-between;
 }
 
-#users{
+#users {
     list-style: none;
     font-weight: 600;
 }
 
-.unactive{display: none !important;}
+.unactive {
+    display: none !important;
+}
 
-#addUser{
+#addUser {
     font-size: 40px;
     cursor: pointer;
 }
 
-#readersPage{
+#readersPage {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -99,7 +116,7 @@ body{
 }
 
 
-.givenBooksPage{
+.givenBooksPage {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -107,14 +124,23 @@ body{
 }
 
 
-#givenBooks{
+#givenBooks {
     display: flex;
 }
 
 img {
     width: 100px;
-  }
-  
-  li {
+}
+
+li {
     list-style: none;
-  }
+}
+
+.tabs li.active {
+    background-color: #5BA199;
+    color: white;
+}
+
+.unactive {
+    display: none !important;
+}

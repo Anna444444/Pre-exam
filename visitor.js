@@ -79,4 +79,4 @@ const data = {
 };
 
 const reader = new Visitor(data);
-document.getElementById('readersList').appendChild(reader.view);
+document.getElementById('users').appendChild(reader.view);

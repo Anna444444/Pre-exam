@@ -63,3 +63,14 @@ async function getBook(){
  
  const readersTab = document.getElementById('readers');
  readersTab.addEventListener('click', showVisitors);
+
+
+let newb = document.querySelector('#newB');
+
+ newb.onclick = () => {bk.forEach(book => {
+
+    let newBk = document.querySelector('#newBooksPage');
+
+    newBk.append(book.view);
+ });
+}
