@@ -10,8 +10,16 @@ export class Visitor {
     this.view = this.createView();
   }
 
+  returnBook(book) {
+    const index = this.booksOnHand.indexOf(book);
+    if (index !== -1) {
+      this.booksOnHand.splice(index, 1);
+    }
+  } 
+
   createView() {
     const listItem = document.createElement('li');
+    listItem.classList.add('reader-item');
     listItem.innerHTML = `
       <div>
         <img src="${this.image}" alt="Фото">
@@ -21,7 +29,7 @@ export class Visitor {
         <p>Дата регистрации: ${this.registrationDate.toLocaleDateString()}</p>
       </div>
       <ul class="books-on-hand">
-        ${this.booksOnHand.map(book => `<li>${book}</li>`).join('')}
+        ${this.booksOnHand.map(book => `<li>${book.title} (${book.returnDate})</li>`).join('')}
       </ul>
     `;
     return listItem;
@@ -71,12 +79,25 @@ export class Visitor {
   }
 }
 
-const data = {
+function renderReaders() {
+  const usersList = document.getElementById('users');
+  usersList.innerHTML = '';
+
+  readers.forEach(reader => {
+    const readerItem = document.createElement('li');
+    readerItem.textContent = reader.fullName;
+    usersList.appendChild(readerItem);
+  });
+}
+
+
+let data = {
   fullName: 'Лукашевич Анна Васильевна',
   address: 'г. Алматы, ул. Айманова, д. 140',
   phone: '+7 705 1904599',
   image: 'img/фото1.jpg'
 };
 
-const reader = new Visitor(data);
+
+let reader = new Visitor(data);
 document.getElementById('users').appendChild(reader.view);
