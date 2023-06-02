@@ -386,17 +386,18 @@ function showModal() {
 
 const searchReaderInput = document.getElementById('searchReaderInput');
 const searchReaderBtn = document.getElementById('searchReaderBtn');
+const searchReaderr = document.getElementById('searchReader');
 
 searchReaderBtn.addEventListener('click', () => {
-  const searchTerm = searchReaderBtn.value;
-  const foundReader = searchReader(searchTerm);
+  let searchTerm = searchReaderr.value;
+  let foundReader = searchReader(searchTerm);
   if (foundReader) {
     alert('Found reader: ' + foundReader.fullName);
     showReaderModal(foundReader);
   } else {
     alert('Reader not found');
   }
-});
+})
 
 
 function searchReader(searchTerm) {
@@ -413,7 +414,6 @@ function searchReader(searchTerm) {
 
   return null;
 }
-
 
 function hideModal() {
   modalContainer.innerHTML = '';
