@@ -218,6 +218,17 @@ function showModal() {
   const modalTitle = document.createElement('h2');
   modalTitle.textContent = 'Добавление нового читателя';
 
+  const readerImage = document.createElement('img');
+  readerImage.id = 'readerImage';
+  readerImage.src = '';
+  readerImage.alt = 'Reader photo';
+  modalContent.appendChild(readerImage);
+
+  const imageInput = document.createElement('input');
+  imageInput.id = 'imageInput';
+  imageInput.type = 'file';
+  imageInput.accept = 'image/*';
+
   const nameLabel = document.createElement('label');
   nameLabel.textContent = 'ФИО: ';
   const nameInput = document.createElement('input');
@@ -233,16 +244,16 @@ function showModal() {
   const phoneInput = document.createElement('input');
   phoneInput.type = 'text';
 
-
   const addButton = document.createElement('button');
   addButton.textContent = 'Ок';
   addButton.addEventListener('click', () => {
     const fullName = nameInput.value;
     const address = addressInput.value;
     const phone = phoneInput.value;
+    const image = readerImage.src;
 
-    if (fullName && address && phone) {
-      const reader = new Visitor({ fullName, address, phone });
+    if (fullName && address && phone && image) {
+      const reader = new Visitor({ fullName, address, phone, image });
       readers.push(reader);
       renderReaders();
       hideModal();
@@ -255,6 +266,8 @@ function showModal() {
 
   modalContent.appendChild(closeButton);
   modalContent.appendChild(modalTitle);
+  modalContent.appendChild(readerImage);
+  modalContent.appendChild(imageInput);
   modalContent.appendChild(nameLabel);
   modalContent.appendChild(nameInput);
   modalContent.appendChild(addressLabel);
@@ -266,7 +279,21 @@ function showModal() {
 
   modal.appendChild(modalContent);
   modalContainer.appendChild(modal);
-}
+
+  imageInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        readerImage.src = e.target.result; 
+        readerImage.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+}//
+
 
 function hideModal() {
   modalContainer.innerHTML = '';
