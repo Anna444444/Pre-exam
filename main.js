@@ -1,8 +1,26 @@
 import { Book } from "./book.js";
 import { Visitor } from "./visitor.js";
-import {GiveModel} from './give.js';
+import { Booklist } from "./booklist.js";
 const log = console.log;
 const url = "https://www.dbooks.org/api/recent";
+const find_url = "https://www.dbooks.org/api/search/";
+const bookInp = document.querySelector('#book');
+const search = document.querySelector('#search');
+
+
+
+
+async function findBook(book_name) {
+  log("finding book");
+  let response = await fetch(find_url + '' + book_name);
+  log(response);
+
+  if (response.ok) {
+    let json = await response.json();
+    log(json);
+    return json;
+  }
+}
 
 async function getBook() {
   log("getting book");
@@ -15,14 +33,21 @@ async function getBook() {
   }
 }
 
+
 let bk = [];
 let response = await getBook();
+
 
 for (let book = 0; book < response.total; book++) {
 
   bk.push(new Book(response.books[book]));
 
 }
+
+
+
+
+
 
 const visitorsData = [
   {
@@ -100,6 +125,10 @@ function renderReaders() {
 
 let newb = document.querySelector('#newB');
 
+
+
+
+
 newb.onclick = () => {
   let newBk = document.querySelector('#newBooksPage');
   let given = document.querySelector('.givenBooksPage');
@@ -163,6 +192,59 @@ function hideAllPages() {
   readersPage.classList.add('unactive');
   givenBooksPage.classList.add('unactive');
 }
+
+function getBookByName() {
+
+  let book = document.querySelector('#book');
+
+  let book_name = book.value;
+  
+
+  return findBook(book_name);
+
+}
+
+
+async function generateFindedBooks() {
+
+  let findedBooks = [];
+
+  let ourBks = await getBookByName();
+
+
+
+  for (let book = 0; book < ourBks.total; book++) {
+
+    findedBooks.push(new Book(ourBks.books[book]));
+  
+  }
+
+  let newBk = document.querySelector('#newBooksPage');
+  newBk.innerHTML = '';
+  let given = document.querySelector('.givenBooksPage');
+  let readers = document.querySelector('#readersPage');
+  given.classList.add('unactive');
+  newBk.classList.remove('unactive');
+  readers.classList.add('unactive');
+
+  findedBooks.forEach(book => {
+    newBk.append(book.view);
+  });
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+search.addEventListener('click', generateFindedBooks);
 
 function generateRandomId() {
   const characters = '0123456789';
