@@ -35,16 +35,6 @@ async function getBook() {
 }
 
 
-let bk = [];
-let response = await getBook();
-
-
-for (let book = 0; book < response.total; book++) {
-
-  bk.push(new Book(response.books[book]));
-
-}
-
 
 
 
@@ -124,32 +114,7 @@ function renderReaders() {
   });
 }
 
-let newb = document.querySelector('#newB');
 
-
-
-
-
-newb.onclick = () => {
-  let newBk = document.querySelector('#newBooksPage');
-  let given = document.querySelector('.givenBooksPage');
-  let readers = document.querySelector('#readersPage');
-  given.classList.add('unactive');
-  newBk.classList.remove('unactive');
-  readers.classList.add('unactive');
-
-  bk.forEach(book => {
-    newBk.append(book.view);
-  });
-
-  btns = document.querySelectorAll('.give_book');
-  console.log(btns);
-
-  btns.forEach(x => {
-    x.onclick = showGiveModel;
-  });
-
-};
 
 let readersVisible = false;
 
@@ -207,15 +172,40 @@ function getBookByName() {
   let book = document.querySelector('#book');
 
   let book_name = book.value;
-  
+
 
   return findBook(book_name);
 
 }
 
 
+async function generateNewBooks() {
+  let bk = [];
+  let response = await getBook();
 
 
+  for (let book = 0; book < response.total; book++) {
+
+    bk.push(new Book(response.books[book]));
+
+  }
+  let newBk = document.querySelector('#newBooksPage');
+  let given = document.querySelector('.givenBooksPage');
+  let readers = document.querySelector('#readersPage');
+  given.classList.add('unactive');
+  newBk.classList.remove('unactive');
+  readers.classList.add('unactive');
+
+  bk.forEach(book => {
+    newBk.append(book.view);
+  });
+}
+
+let newb = document.querySelector('#newB');
+
+newb.onclick = generateNewBooks;
+
+generateNewBooks
 
 async function generateFindedBooks() {
 
@@ -228,7 +218,7 @@ async function generateFindedBooks() {
   for (let book = 0; book < ourBks.total; book++) {
 
     findedBooks.push(new Book(ourBks.books[book]));
-  
+
   }
 
   let newBk = document.querySelector('#newBooksPage');
@@ -385,14 +375,45 @@ function showModal() {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        readerImage.src = e.target.result; 
+        readerImage.src = e.target.result;
         readerImage.src = e.target.result;
       };
       reader.readAsDataURL(file);
     }
   });
-}//
+}
 
+
+const searchReaderInput = document.getElementById('searchReaderInput');
+const searchReaderBtn = document.getElementById('searchReaderBtn');
+const searchReaderr = document.getElementById('searchReader');
+
+searchReaderBtn.addEventListener('click', () => {
+  let searchTerm = searchReaderr.value;
+  let foundReader = searchReader(searchTerm);
+  if (foundReader) {
+    alert('Found reader: ' + foundReader.fullName);
+    showReaderModal(foundReader);
+  } else {
+    alert('Reader not found');
+  }
+})
+
+
+function searchReader(searchTerm) {
+  const foundById = readers.find(reader => reader.id === Number(searchTerm));
+
+  if (foundById) {
+    return foundById;
+  }
+
+  const foundByName = readers.find(reader => reader.fullName.toLowerCase().includes(searchTerm.toLowerCase()));
+  if (foundByName) {
+    return foundByName;
+  }
+
+  return null;
+}
 
 function hideModal() {
   modalContainer.innerHTML = '';
@@ -421,7 +442,7 @@ function showGiveModel(ev){
 // let a = new GiveModel('resourses/ex.png');
 // a.show();
 
-// let a =document.getElementById('users'); 
+// let a =document.getElementById('users');
 // for(let i of a){
 //   console.log(i);
 // }
