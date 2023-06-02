@@ -1,7 +1,7 @@
 import { Book } from "./book.js";
 import { Visitor } from "./visitor.js";
 import { Booklist } from "./booklist.js";
-import { GiveModel } from './give.js';
+import {GiveModel} from './give.js';
 const log = console.log;
 const url = "https://www.dbooks.org/api/recent";
 const find_url = "https://www.dbooks.org/api/search/";
@@ -68,30 +68,16 @@ const readers = [];
 
 visitorsData.forEach(data => {
   const reader = new Visitor(data);
-  reader.id = generateRandomId();
-  reader.registrationDate = new Date().toLocaleDateString();
+  reader.id = generateRandomId(); // Генерация случайного id
+  reader.registrationDate = new Date().toLocaleDateString(); // Установка текущей даты регистрации
   readers.push(reader);
 });
-
-
 
 function renderReaders() {
   const usersList = document.getElementById('users');
   usersList.innerHTML = '';
 
-  const sortedReaders = readers.slice().sort((a, b) => {
-    const nameA = a.fullName.toLowerCase();
-    const nameB = b.fullName.toLowerCase();
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
-
-  sortedReaders.forEach(reader => {
+  readers.forEach(reader => {
     const readerItem = document.createElement('li');
     readerItem.classList.add('reader-item');
 
@@ -127,6 +113,8 @@ function renderReaders() {
     usersList.appendChild(readerItem);
   });
 }
+
+
 
 let readersVisible = false;
 
@@ -211,13 +199,23 @@ async function generateNewBooks() {
   bk.forEach(book => {
     newBk.append(book.view);
   });
+
+  btns = document.querySelectorAll('.give_book');
+  console.log(btns);
+
+  btns.forEach(x => {
+    x.onclick = showGiveModel;
+  });
+
+
+
 }
 
 let newb = document.querySelector('#newB');
 
 newb.onclick = generateNewBooks;
 
-generateNewBooks
+
 
 async function generateFindedBooks() {
 
@@ -247,6 +245,10 @@ async function generateFindedBooks() {
 
   btns = document.querySelectorAll('.give_book');
   console.log(btns);
+
+  btns.forEach(x => {
+    x.onclick = showGiveModel;
+  });
 }
 
 
@@ -444,8 +446,10 @@ document.getElementById('users').appendChild(reader.view);
 
 
 function showGiveModel(ev){
+  
   let src = ev.target.parentElement.firstChild.src;
   let a = new GiveModel(src);
+  
   a.show();
 }
 
