@@ -381,7 +381,38 @@ function showModal() {
       reader.readAsDataURL(file);
     }
   });
-}//
+}
+
+
+const searchReaderInput = document.getElementById('searchReaderInput');
+const searchReaderBtn = document.getElementById('searchReaderBtn');
+
+searchReaderBtn.addEventListener('click', () => {
+  const searchTerm = searchReaderBtn.value;
+  const foundReader = searchReader(searchTerm);
+  if (foundReader) {
+    alert('Found reader: ' + foundReader.fullName);
+    showReaderModal(foundReader);
+  } else {
+    alert('Reader not found');
+  }
+});
+
+
+function searchReader(searchTerm) {
+  const foundById = readers.find(reader => reader.id === Number(searchTerm));
+
+  if (foundById) {
+    return foundById;
+  }
+
+  const foundByName = readers.find(reader => reader.fullName.toLowerCase().includes(searchTerm.toLowerCase()));
+  if (foundByName) {
+    return foundByName;
+  }
+
+  return null;
+}
 
 
 function hideModal() {
