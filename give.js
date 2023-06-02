@@ -21,6 +21,10 @@ export class GiveModel{
         closeBtn.textContent = 'Отмена';
         closeBtn.classList.add('giveCloseBtn');
 
+        let select =document.createElement('select');
+
+        
+
         let div = document.createElement('div');
         div.classList.add('giveModelWin');
         

@@ -399,3 +399,7 @@ document.getElementById('users').appendChild(reader.view);
 // let a = new GiveModel('resourses/ex.png');
 // a.show();
 
+// let a =document.getElementById('users'); 
+// for(let i of a){
+//   console.log(i);
+// }
