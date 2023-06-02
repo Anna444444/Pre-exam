@@ -5,7 +5,10 @@ export class Visitor {
     this.address = data.address;
     this.phone = data.phone;
     this.image = data.image;
-    this.registrationDate = new Date();
+    this.day =new Date().getDate();
+    this.month = new Date().getMonth();
+    this.year = new Date().getFullYear();
+    this.registrationDate = this.day +"."+this.month +"."+this.year;
     this.booksOnHand = [];
     this.view = this.createView();
   }
@@ -26,7 +29,7 @@ export class Visitor {
         <h3>${this.fullName}</h3>
         <p>Адрес: ${this.address}</p>
         <p>Телефон: ${this.phone}</p>
-        <p>Дата регистрации: ${this.registrationDate.toLocaleDateString()}</p>
+        <p>Дата регистрации: ${this.registrationDate}</p>
       </div>
       <ul class="books-on-hand">
         ${this.booksOnHand.map(book => `<li>${book.title} (${book.returnDate})</li>`).join('')}
