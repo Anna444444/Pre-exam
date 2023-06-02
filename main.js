@@ -36,10 +36,6 @@ async function getBook() {
 
 
 
-
-
-
-
 const visitorsData = [
   {
     fullName: 'Лукашевич Анна Васильевна',
@@ -76,6 +72,7 @@ visitorsData.forEach(data => {
 
 
 function renderReaders() {
+
   const usersList = document.getElementById('users');
   usersList.innerHTML = '';
 
@@ -124,6 +121,10 @@ function renderReaders() {
     readerRegistrationDate.textContent = 'Дата регистрации: ' + reader.registrationDate;
     readerItem.appendChild(readerRegistrationDate);
 
+    readerItem.addEventListener('click', () => {
+      showReaderModal(reader);
+    });
+
     usersList.appendChild(readerItem);
   });
 }
@@ -164,9 +165,57 @@ document.getElementById('users').addEventListener('click', event => {
 });
 
 function showReaderModal(reader) {
+  const modalContainer = document.getElementById('modalContainer');
+  modalContainer.innerHTML = '';
+
+  const modal = document.createElement('div');
+  modal.classList.add('modal');
+
+  const modalContent = document.createElement('div');
+  modalContent.classList.add('modal-content');
+
+  const closeButton = document.createElement('span');
+  closeButton.classList.add('close-button');
+  closeButton.innerHTML = '&times;';
+  closeButton.addEventListener('click', hideReaderModal);
+
+  const readerInfo = document.createElement('div');
+  readerInfo.classList.add('reader-info-modal');
+
+  const readerImage = document.createElement('img');
+  readerImage.src = reader.image;
+  readerImage.alt = 'Reader photo';
+  readerInfo.appendChild(readerImage);
+
+  const readerFullName = document.createElement('h3');
+  readerFullName.textContent = reader.fullName;
+  readerInfo.appendChild(readerFullName);
+
+  const readerAddress = document.createElement('p');
+  readerAddress.textContent = 'Адрес: ' + reader.address;
+  readerInfo.appendChild(readerAddress);
+
+  const readerPhone = document.createElement('p');
+  readerPhone.textContent = 'Телефон: ' + reader.phone;
+  readerInfo.appendChild(readerPhone);
+
+  const readerId = document.createElement('p');
+  readerId.textContent = 'ID: ' + reader.id;
+  readerInfo.appendChild(readerId);
+
+  const readerRegistrationDate = document.createElement('p');
+  readerRegistrationDate.textContent = 'Дата регистрации: ' + reader.registrationDate;
+  readerInfo.appendChild(readerRegistrationDate);
+
+  modalContent.appendChild(closeButton);
+  modalContent.appendChild(readerInfo);
+  modal.appendChild(modalContent);
+  modalContainer.appendChild(modal);
 }
 
 function hideReaderModal() {
+  const modalContainer = document.getElementById('modalContainer');
+  modalContainer.innerHTML = '';
 }
 
 function hideAllPages() {
@@ -248,15 +297,6 @@ async function generateFindedBooks() {
   btns = document.querySelectorAll('.give_book');
   console.log(btns);
 }
-
-
-
-
-
-
-
-
-
 
 
 search.addEventListener('click', generateFindedBooks);
@@ -443,9 +483,8 @@ document.getElementById('users').appendChild(reader.view);
 
 
 
-function showGiveModel(ev){
-  let src = ev.target.parentElement.firstChild.src;
-  let a = new GiveModel(src);
+function showGiveModel(ev) {
+  let a = new GiveModel('resourses/ex.png');
   a.show();
 }
 
