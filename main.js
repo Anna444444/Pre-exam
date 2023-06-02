@@ -446,7 +446,10 @@ document.getElementById('users').appendChild(reader.view);
 
 
 function showGiveModel(ev){
-  let a = new GiveModel('resourses/ex.png');
+  
+  let src = ev.target.parentElement.firstChild.src;
+  let a = new GiveModel(src);
+  
   a.show();
 }
 
