@@ -49,6 +49,16 @@ body {
     padding: 10px 0px;
 }
 
+#give_book {
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#give_book:hover {
+    opacity: 0.5;
+}
+
 #book,
 #writer,
 #oldBook,
