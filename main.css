@@ -349,3 +349,7 @@ input[type="text"] {
     width: 100%;
     justify-content: space-between;
 }
+
+
+
+#oldBook,#oldWriter{margin-bottom: 20px;}
