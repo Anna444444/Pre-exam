@@ -34,16 +34,6 @@ async function getBook() {
 }
 
 
-let bk = [];
-let response = await getBook();
-
-
-for (let book = 0; book < response.total; book++) {
-
-  bk.push(new Book(response.books[book]));
-
-}
-
 
 
 
@@ -123,24 +113,7 @@ function renderReaders() {
   });
 }
 
-let newb = document.querySelector('#newB');
 
-
-
-
-
-newb.onclick = () => {
-  let newBk = document.querySelector('#newBooksPage');
-  let given = document.querySelector('.givenBooksPage');
-  let readers = document.querySelector('#readersPage');
-  given.classList.add('unactive');
-  newBk.classList.remove('unactive');
-  readers.classList.add('unactive');
-
-  bk.forEach(book => {
-    newBk.append(book.view);
-  });
-};
 
 let readersVisible = false;
 
@@ -198,15 +171,40 @@ function getBookByName() {
   let book = document.querySelector('#book');
 
   let book_name = book.value;
-  
+
 
   return findBook(book_name);
 
 }
 
 
+async function generateNewBooks() {
+  let bk = [];
+  let response = await getBook();
 
 
+  for (let book = 0; book < response.total; book++) {
+
+    bk.push(new Book(response.books[book]));
+
+  }
+  let newBk = document.querySelector('#newBooksPage');
+  let given = document.querySelector('.givenBooksPage');
+  let readers = document.querySelector('#readersPage');
+  given.classList.add('unactive');
+  newBk.classList.remove('unactive');
+  readers.classList.add('unactive');
+
+  bk.forEach(book => {
+    newBk.append(book.view);
+  });
+}
+
+let newb = document.querySelector('#newB');
+
+newb.onclick = generateNewBooks;
+
+generateNewBooks
 
 async function generateFindedBooks() {
 
@@ -219,7 +217,7 @@ async function generateFindedBooks() {
   for (let book = 0; book < ourBks.total; book++) {
 
     findedBooks.push(new Book(ourBks.books[book]));
-  
+
   }
 
   let newBk = document.querySelector('#newBooksPage');
@@ -375,7 +373,7 @@ function showModal() {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        readerImage.src = e.target.result; 
+        readerImage.src = e.target.result;
         readerImage.src = e.target.result;
       };
       reader.readAsDataURL(file);
@@ -433,7 +431,7 @@ document.getElementById('users').appendChild(reader.view);
 // let a = new GiveModel('resourses/ex.png');
 // a.show();
 
-// let a =document.getElementById('users'); 
+// let a =document.getElementById('users');
 // for(let i of a){
 //   console.log(i);
 // }
