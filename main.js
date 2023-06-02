@@ -236,6 +236,8 @@ function showModal() {
 
   const addButton = document.createElement('button');
   addButton.textContent = 'Ок';
+  addButton.classList.add('addButton');
+
   addButton.addEventListener('click', () => {
     const fullName = nameInput.value;
     const address = addressInput.value;
@@ -251,6 +253,7 @@ function showModal() {
 
   const cancelButton = document.createElement('button');
   cancelButton.textContent = 'Отмена';
+  cancelButton.classList.add('cancelButton');
   cancelButton.addEventListener('click', hideModal);
 
   modalContent.appendChild(closeButton);
