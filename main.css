@@ -361,3 +361,42 @@ body {
 
 
 #oldBook,#oldWriter{margin-bottom: 20px;}
+
+
+.giveModelWin{
+    font-family: 'Roboto', sans-serif;
+    width: 20%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius:10px;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+}
+
+
+
+.giveModelWin button{
+    border: none;
+    border-radius: 15px;
+    background-color: #92cb95;
+    font-size: 21px;
+    padding: 10px;
+    margin: 4px 20px;
+    cursor: pointer;
+}
+
+.giveModelWin img{
+    margin: 0 auto;
+    width: 130px;
+    height: 200px;
+    margin: 15px 0px;
+}
+
+.giveModelWin p{
+    margin: 15px 0px; 
+    font-weight: 900;
+}
+
+
+

@@ -1,5 +1,6 @@
 import { Book } from "./book.js";
 import { Visitor } from "./visitor.js";
+import {GiveModel} from './give.js';
 const log = console.log;
 const url = "https://www.dbooks.org/api/recent";
 
@@ -311,3 +312,8 @@ let data = {
 
 let reader = new Visitor(data);
 document.getElementById('users').appendChild(reader.view);
+
+
+// let a = new GiveModel('resourses/ex.png');
+// a.show();
+
