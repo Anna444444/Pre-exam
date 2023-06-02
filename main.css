@@ -325,3 +325,11 @@ body {
     margin-left: 100px;
     background-color: #92cb95;
 }
+
+
+#imageInput{
+    border: none;
+    background-color: #DDBEAA;
+    border-radius: 10px;
+    font-size: 15px;
+}
