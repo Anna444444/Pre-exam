@@ -199,13 +199,23 @@ async function generateNewBooks() {
   bk.forEach(book => {
     newBk.append(book.view);
   });
+
+  btns = document.querySelectorAll('.give_book');
+  console.log(btns);
+
+  btns.forEach(x => {
+    x.onclick = showGiveModel;
+  });
+
+
+
 }
 
 let newb = document.querySelector('#newB');
 
 newb.onclick = generateNewBooks;
 
-generateNewBooks
+
 
 async function generateFindedBooks() {
 
@@ -235,6 +245,10 @@ async function generateFindedBooks() {
 
   btns = document.querySelectorAll('.give_book');
   console.log(btns);
+
+  btns.forEach(x => {
+    x.onclick = showGiveModel;
+  });
 }
 
 
