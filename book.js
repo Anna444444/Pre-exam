@@ -13,7 +13,8 @@ export class Book {
         this.user = undefined;
         this.view = document.createElement('div');
         this.view.classList.add('book');
-        this.view.insertAdjacentHTML("afterbegin", `<img src=${this.image}>  <p>${this.id}</p> <p id="bookname">${this.title}</p> <p>${this.subtitle}</p> <p>${this.authors}</p> <p id="isGiven">Есть в наличии</p>  <button id='give_book'>Выдать</button>`);
+        this.view.insertAdjacentHTML("afterbegin", `<img src=${this.image}>  <p>${this.id}</p> <p id="bookname">${this.title}</p> <p>${this.subtitle}</p> <p>${this.authors}</p> <p id="isGiven">Есть в наличии</p>  <button class='give_book'>Выдать</button>`);
+       
     }
 
 

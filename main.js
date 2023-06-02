@@ -1,12 +1,13 @@
 import { Book } from "./book.js";
 import { Visitor } from "./visitor.js";
 import { Booklist } from "./booklist.js";
+import {GiveModel} from './give.js';
 const log = console.log;
 const url = "https://www.dbooks.org/api/recent";
 const find_url = "https://www.dbooks.org/api/search/";
 const bookInp = document.querySelector('#book');
 const search = document.querySelector('#search');
-
+let btns = undefined;
 
 
 
@@ -140,6 +141,14 @@ newb.onclick = () => {
   bk.forEach(book => {
     newBk.append(book.view);
   });
+
+  btns = document.querySelectorAll('.give_book');
+  console.log(btns);
+
+  btns.forEach(x => {
+    x.onclick = showGiveModel;
+  });
+
 };
 
 let readersVisible = false;
@@ -234,7 +243,8 @@ async function generateFindedBooks() {
     newBk.append(book.view);
   });
 
-
+  btns = document.querySelectorAll('.give_book');
+  console.log(btns);
 }
 
 
@@ -397,6 +407,15 @@ let data = {
 
 let reader = new Visitor(data);
 document.getElementById('users').appendChild(reader.view);
+
+
+
+function showGiveModel(ev){
+  let a = new GiveModel('resourses/ex.png');
+  a.show();
+}
+
+
 
 
 // let a = new GiveModel('resourses/ex.png');
