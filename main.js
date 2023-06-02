@@ -394,3 +394,8 @@ let data = {
 
 let reader = new Visitor(data);
 document.getElementById('users').appendChild(reader.view);
+
+
+// let a = new GiveModel('resourses/ex.png');
+// a.show();
+
