@@ -1,39 +1,47 @@
-*{margin:0;padding: 0;}
-body{
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
     margin: 0;
     padding: 0;
     background-color: #E5E3E4;
 }
-.cont{
+
+.cont {
     width: 1220px;
     margin: 0 auto;
     background-color: #BBC6C8;
     font-family: 'Roboto', sans-serif;
     display: flex;
 }
-.menu{
+
+.menu {
     width: 20%;
 }
-.tabs{
-    background-color:#5BA199 ;
+
+.tabs {
+    background-color: #5BA199;
     padding: 10px;
 }
-.tabs li{
+
+.tabs li {
     list-style: none;
     width: 91.4%;
     background-color: #97bfba;
     font-size: 20px;
     font-weight: 600;
-    margin:10px 0px;
+    margin: 10px 0px;
     padding: 10px;
     cursor: pointer;
 }
 
-.right-side{
+.right-side {
     width: 80%;
 }
 
-.sarch{
+.sarch {
     width: 100%;
     background-color: white;
     display: flex;
@@ -41,7 +49,10 @@ body{
     padding: 10px 0px;
 }
 
-#book,#writer,#oldBook,#oldWriter{
+#book,
+#writer,
+#oldBook,
+#oldWriter {
     font-size: 18px;
     font-weight: 500;
     border-radius: 10px;
@@ -51,7 +62,8 @@ body{
     padding: 6px;
 }
 
-#search,#searchOldBook{
+#search,
+#searchOldBook {
     border: none;
     border-radius: 10px;
     background-color: #469597;
@@ -64,15 +76,19 @@ body{
     font-weight: 400;
 }
 
-.book{
+.book {
     text-align: center;
     display: flex;
     flex-direction: column;
-    width:29%;
+    width: 29%;
     align-items: center;
     margin: 20px;
 }
-.book img{width: 70%;height: 320px;}
+
+.book img {
+    width: 70%;
+    height: 320px;
+}
 
 
 #newBooksPage {
@@ -92,19 +108,21 @@ body{
     width: 70%;
 }
 
-#users{
+#users {
     list-style: none;
     font-weight: 600;
 }
 
-.unactive{display: none !important;}
+.unactive {
+    display: none !important;
+}
 
-#addUser{
+#addUser {
     font-size: 40px;
     cursor: pointer;
 }
 
-#readersPage{
+#readersPage {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -112,7 +130,7 @@ body{
 }
 
 
-.givenBooksPage{
+.givenBooksPage {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -209,8 +227,7 @@ body{
     background-color: #d32f2f;
 }
 
-
-#searchReader{
+#searchReader {
     border: none;
     border-radius: 10px;
     background-color: #DDBEAA;
@@ -221,7 +238,7 @@ body{
     margin-bottom: 10px;
 }
 
-#addReader{
+#addReader {
     font-size: 24px;
     letter-spacing: 2px;
     border: none;
@@ -233,7 +250,48 @@ body{
     cursor: pointer;
 }
 
+.right-side {
+    height: 100%;
+}
 
-
-.right-side{height: 100%;}
-
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

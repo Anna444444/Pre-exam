@@ -1,36 +1,36 @@
-import {Book} from "./book.js";
+import { Book } from "./book.js";
 import { Visitor } from "./visitor.js";
 const log = console.log;
 const url = "https://www.dbooks.org/api/recent";
 
-async function getBook(){
-    log("getting book");
-    let response = await fetch(url);
-    log(response);
-    if(response.ok){
-        let json = await response.json();
-        log(json);
-        return json;
-    }
- }
+async function getBook() {
+  log("getting book");
+  let response = await fetch(url);
+  log(response);
+  if (response.ok) {
+    let json = await response.json();
+    log(json);
+    return json;
+  }
+}
 
- let bk = [];
- let response = await getBook();
+let bk = [];
+let response = await getBook();
 
- for(let book=0; book<response.total; book++){
+for (let book = 0; book < response.total; book++) {
 
-    bk.push(new Book(response.books[book]));
+  bk.push(new Book(response.books[book]));
 
- }
+}
 
- const visitorsData = [
+const visitorsData = [
   {
     fullName: 'Лукашевич Анна Васильевна',
     address: 'г. Алматы, ул. Айманова, д. 140',
     phone: '+7 705 1904599',
     image: 'img/фото1.jpg'
   },
- 
+
   {
     fullName: 'Иванов Павел Леонидович',
     address: 'г. Алматы, ул. Ленина, д. 100',
@@ -44,13 +44,15 @@ async function getBook(){
     phone: '+7 700 8964785',
     image: 'img/muzhchina_kapyushon_1774.jpg'
   },
-  
+
 ];
 
 const readers = [];
 
 visitorsData.forEach(data => {
   const reader = new Visitor(data);
+  reader.id = generateRandomId(); // Генерация случайного id
+  reader.registrationDate = new Date().toLocaleDateString(); // Установка текущей даты регистрации
   readers.push(reader);
 });
 
@@ -83,11 +85,13 @@ function renderReaders() {
     readerPhone.textContent = 'Телефон: ' + reader.phone;
     readerInfo.appendChild(readerPhone);
 
-    const viewButton = document.createElement('button');
-    viewButton.addEventListener('click', () => {
-      showReaderModal(reader);
-    });
-    readerItem.appendChild(viewButton);
+    const readerId = document.createElement('p');
+    readerId.textContent = 'ID: ' + reader.id;
+    readerItem.appendChild(readerId);
+
+    const readerRegistrationDate = document.createElement('p');
+    readerRegistrationDate.textContent = 'Дата регистрации: ' + reader.registrationDate;
+    readerItem.appendChild(readerRegistrationDate);
 
     usersList.appendChild(readerItem);
   });
@@ -159,6 +163,18 @@ function hideAllPages() {
   givenBooksPage.classList.add('unactive');
 }
 
+function generateRandomId() {
+  const characters = '0123456789';
+  const length = 6;
+  let randomId = '';
+
+  for (let i = 0; i < length; i++) {
+    randomId += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  return randomId;
+}
+
 document.getElementById('newB').addEventListener('click', function () {
   hideAllPages();
   document.getElementById('newBooksPage').classList.remove('unactive');
@@ -181,9 +197,79 @@ document.getElementById('search').addEventListener('click', function () {
 });
 
 const addReaderButton = document.getElementById('addReader');
-addReaderButton.addEventListener('click', openModal);
+const modalContainer = document.getElementById('modalContainer');
 
-function openModal() {
+addReaderButton.addEventListener('click', () => {
+  showModal();
+});
+
+function showModal() {
+  const modal = document.createElement('div');
+  modal.classList.add('modal');
+
+  const modalContent = document.createElement('div');
+  modalContent.classList.add('modal-content');
+
+  const closeButton = document.createElement('span');
+  closeButton.classList.add('close-button');
+  closeButton.innerHTML = '&times;';
+  closeButton.addEventListener('click', hideModal);
+
+  const modalTitle = document.createElement('h2');
+  modalTitle.textContent = 'Добавление нового читателя';
+
+  const nameLabel = document.createElement('label');
+  nameLabel.textContent = 'ФИО: ';
+  const nameInput = document.createElement('input');
+  nameInput.type = 'text';
+
+  const addressLabel = document.createElement('label');
+  addressLabel.textContent = 'Адрес: ';
+  const addressInput = document.createElement('input');
+  addressInput.type = 'text';
+
+  const phoneLabel = document.createElement('label');
+  phoneLabel.textContent = 'Телефон: ';
+  const phoneInput = document.createElement('input');
+  phoneInput.type = 'text';
+
+
+  const addButton = document.createElement('button');
+  addButton.textContent = 'Ок';
+  addButton.addEventListener('click', () => {
+    const fullName = nameInput.value;
+    const address = addressInput.value;
+    const phone = phoneInput.value;
+
+    if (fullName && address && phone) {
+      const reader = new Visitor({ fullName, address, phone });
+      readers.push(reader);
+      renderReaders();
+      hideModal();
+    }
+  });
+
+  const cancelButton = document.createElement('button');
+  cancelButton.textContent = 'Отмена';
+  cancelButton.addEventListener('click', hideModal);
+
+  modalContent.appendChild(closeButton);
+  modalContent.appendChild(modalTitle);
+  modalContent.appendChild(nameLabel);
+  modalContent.appendChild(nameInput);
+  modalContent.appendChild(addressLabel);
+  modalContent.appendChild(addressInput);
+  modalContent.appendChild(phoneLabel);
+  modalContent.appendChild(phoneInput);
+  modalContent.appendChild(addButton);
+  modalContent.appendChild(cancelButton);
+
+  modal.appendChild(modalContent);
+  modalContainer.appendChild(modal);
+}
+
+function hideModal() {
+  modalContainer.innerHTML = '';
 }
 
 let data = {
