@@ -26,7 +26,7 @@ export class Visitor {
     listItem.innerHTML = `
       <div>
         <img src="${this.image}" alt="Фото">
-        <h3>${this.fullName}</h3>
+        <h3 class="reader">${this.fullName}</h3>
         <p>Адрес: ${this.address}</p>
         <p>Телефон: ${this.phone}</p>
         <p>Дата регистрации: ${this.registrationDate}</p>
@@ -70,7 +70,7 @@ export class Visitor {
     this.view.innerHTML = `
       <div>
         <img src="${this.image}" alt="Фото">
-        <h3>${this.fullName}</h3>
+        <h3 class="reader">${this.fullName}</h3>
         <p>Адрес: ${this.address}</p>
         <p>Телефон: ${this.phone}</p>
         <p>Дата регистрации: ${this.registrationDate.toLocaleDateString()}</p>

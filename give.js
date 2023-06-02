@@ -1,7 +1,8 @@
 export class GiveModel{
-    constructor(src){
+    constructor(src,readers){
         this.date = (Number(new Date().getDate())+14)+"."+ (Number(new Date().getMonth())+1);
         this.src =src;
+        this.readers = readers;
     }
     show(){
         let h2 =document.createElement('h2');
@@ -23,7 +24,9 @@ export class GiveModel{
 
         let select =document.createElement('select');
 
-        
+        for(let x of this.readers){
+            console.log(x);
+        }
 
         let div = document.createElement('div');
         div.classList.add('giveModelWin');

@@ -9,6 +9,8 @@ const bookInp = document.querySelector('#book');
 const search = document.querySelector('#search');
 let btns = undefined;
 
+let qwer = document.querySelectorAll(".reader");
+log(qwer);
 
 
 async function findBook(book_name) {
@@ -446,9 +448,10 @@ document.getElementById('users').appendChild(reader.view);
 
 
 function showGiveModel(ev){
-  
+  let readers = document.querySelectorAll('.reader');
+  console.log(readers);
   let src = ev.target.parentElement.firstChild.src;
-  let a = new GiveModel(src);
+  let a = new GiveModel(src,readers);
   
   a.show();
 }
